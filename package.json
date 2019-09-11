@@ -1,0 +1,34 @@
+{
+  "name": "pdf2json",
+  "version": "0.1.0",
+  "description": "NodeJS library to convert pdf to json or vice versa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=debug 'ts-node' src/index.ts",
+    "build": "tsc src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ClareKang/pdf2json.git"
+  },
+  "author": "ClareKang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ClareKang/pdf2json/issues"
+  },
+  "homepage": "https://github.com/ClareKang/pdf2json#readme",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "utf8-fdf-generator": "0.0.3"
+  },
+  "devDependencies": {
+    "@types/change-case": "^2.3.1",
+    "@types/lodash": "^4.14.138",
+    "@types/node": "^12.7.4",
+    "chalk": "^2.4.2",
+    "change-case": "^3.1.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.3"
+  }
+}
