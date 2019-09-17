@@ -1,4 +1,4 @@
-# PDF2JSON
+# Form PDF2JSON
 
 NodeJS library to convert JSON to PDF or vice versa (JSON to PDF or PDF to JSON)
 
@@ -26,10 +26,10 @@ So you should install PDF Toolkit first.
 
 ```bash
 // with npm
-npm install --save-dev pdf2json
+npm install --save-dev form-pdf2json
 
 // with yarn
-yarn add pdf2json
+yarn add form-pdf2json
 ```
 
 ## Definition
@@ -44,11 +44,11 @@ yarn add pdf2json
 ## Usage
 
 ```javascript
-var pdf2json = require("pdf2json");
+var pdf2json = require("form-pdf2json");
 
 // or
 
-import pdf2json from "pdf2json";
+import pdf2json from "form-pdf2json";
 
 // => { convertPdf2Json: [Function], convertJson2Fdf: [Function], ... }
 ```
@@ -106,4 +106,4 @@ pdf2json.exportPdf2Fdf("path/to/file");
 
 ## Contributions
 
-Feel free to contribute by posting issues or pull requests on [pdf2json](https://github.com/ClareKang/pdf2json)
+Feel free to contribute by posting issues or pull requests on [form-pdf2json](https://github.com/ClareKang/form-pdf2json)
