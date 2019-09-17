@@ -1,5 +1,8 @@
 # Form PDF2JSON
 
+![NPM](https://img.shields.io/npm/l/form-pdf2json?style=flat)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/ClareKang/form-pdf2json?style=flat&logo=github)
+
 NodeJS library to convert JSON to PDF or vice versa (JSON to PDF or PDF to JSON)
 
 Inspired from [pdffiller](https://github.com/pdffillerjs/pdffiller).
