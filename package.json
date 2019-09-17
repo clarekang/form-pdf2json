@@ -41,6 +41,7 @@
     "json to pdf"
   ],
   "dependencies": {
+    "chalk": "^2.4.2",
     "change-case": "^3.1.0",
     "lodash": "^4.17.15",
     "utf8-fdf-generator": "0.0.3"
@@ -50,7 +51,6 @@
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.4",
-    "chalk": "^2.4.2",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
     "ts-jest": "^24.1.0",
