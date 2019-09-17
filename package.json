@@ -2,12 +2,20 @@
   "name": "form-pdf2json",
   "version": "0.1.1",
   "description": "NodeJS library to convert pdf to json or vice versa",
-  "main": "index.js",
-  "files": ["lib/**/*"],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags",
     "start": "NODE_ENV=debug 'ts-node' src/index.ts",
-    "build": "tsc src/index.ts",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
   },
@@ -39,10 +47,13 @@
   },
   "devDependencies": {
     "@types/change-case": "^2.3.1",
+    "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.138",
     "@types/node": "^12.7.4",
     "chalk": "^2.4.2",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "ts-jest": "^24.1.0",
     "ts-node": "^8.3.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
