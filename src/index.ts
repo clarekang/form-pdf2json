@@ -1,12 +1,11 @@
-import { readdirSync, writeFile, unlink } from "fs";
-import { map, zipObject } from "lodash";
 import { camelCase } from "change-case";
+import { execFileSync } from "child_process";
+import { readdirSync, unlink, writeFile } from "fs";
+import { map, zipObject } from "lodash";
+import fdf from "utf8-fdf-generator";
 import { comment, error } from "./helpers";
 
-const execFileSync = require("child_process").execFileSync;
-const fdf = require("utf8-fdf-generator");
-
-interface Field {
+interface IField {
   [key: string]: string;
 }
 
@@ -32,16 +31,16 @@ export default class Pdf2Json {
     this.exportFile(outputFilePath, data);
   }
 
-  public async convertPdf2Json(fileName: string): Promise<Field[]> {
+  public async convertPdf2Json(fileName: string): Promise<IField[]> {
     const sourceFile = `${this.sourcePath}${fileName}`;
-    const regStateOption = /FieldStateOption: ((?!Off)[A-Za-z\t .]+)/;
-    const fieldArray: Field[] = [];
-    const defaultFields = ["fieldName", "fieldType", "fieldFlags"];
+    const regStateOption = /IFieldStateOption: ((?!Off)[A-Za-z\t .]+)/;
+    const fieldArray: IField[] = [];
+    const defaultIFields = ["fieldName", "fieldType", "fieldFlags"];
 
     try {
       const stdout = execFileSync("pdftk", [
         sourceFile,
-        "dump_data_fields_utf8",
+        "dump_data_fields_utf8"
       ]);
 
       const fields = stdout
@@ -50,23 +49,27 @@ export default class Pdf2Json {
         .slice(1);
 
       fields.forEach((field: string) => {
-        const currentField: Field = {};
+        const currentIField: IField = {};
         field.split("\n").forEach(fieldOption => {
-          if (!fieldOption) return;
+          if (!fieldOption) {
+            return;
+          }
           const [name, value] = fieldOption.split(": ");
-          if (defaultFields.indexOf(camelCase(name)) === -1 || !value) return;
-          currentField[camelCase(name)] = value;
+          if (defaultIFields.indexOf(camelCase(name)) === -1 || !value) {
+            return;
+          }
+          currentIField[camelCase(name)] = value;
         });
 
-        if (!!currentField.fieldType && currentField.fieldType === "Button") {
-          currentField.fieldStateOption = !!field.match(regStateOption)
+        if (!!currentIField.fieldType && currentIField.fieldType === "Button") {
+          currentIField.fieldStateOption = !!field.match(regStateOption)
             ? field.match(regStateOption)![1]
             : "";
         }
 
-        currentField.fieldValue = "";
+        currentIField.fieldValue = "";
 
-        fieldArray.push(currentField);
+        fieldArray.push(currentIField);
       });
       return fieldArray;
     } catch (e) {
@@ -113,10 +116,10 @@ export default class Pdf2Json {
         "fill_form",
         tempFDFFile,
         "output",
-        outputFilePath,
+        outputFilePath
       ]);
 
-      //Delete the temporary fdf file.
+      // Delete the temporary fdf file.
       unlink(tempFDFFile, (err: Error | null) => {
         if (err) {
           return error(err.message);
