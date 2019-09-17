@@ -10,14 +10,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClareKang/pdf2json.git"
+    "url": "git+https://github.com/ClareKang/form-pdf2json.git"
   },
   "author": "ClareKang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ClareKang/pdf2json/issues"
+    "url": "https://github.com/ClareKang/form-pdf2json/issues"
   },
-  "homepage": "https://github.com/ClareKang/pdf2json#readme",
+  "homepage": "https://github.com/ClareKang/form-pdf2json#readme",
+  "keywords": [
+    "pdf",
+    "json",
+    "nodejs",
+    "pdftk",
+    "fdf",
+    "pdf filler",
+    "pdf parser",
+    "pdf to json",
+    "json to pdf"
+  ],
   "dependencies": {
     "lodash": "^4.17.15",
     "utf8-fdf-generator": "0.0.3"
