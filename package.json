@@ -3,6 +3,7 @@
   "version": "0.1.1",
   "description": "NodeJS library to convert pdf to json or vice versa",
   "main": "index.js",
+  "files": ["lib/**/*"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=debug 'ts-node' src/index.ts",
