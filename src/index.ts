@@ -1,8 +1,15 @@
+/**
+ * There is no @types for utf8-fdf-generator
+ * So ignore tslint rule temporary
+ */
+// tslint:disable-next-line:no-var-requires
+const fdf = require("utf8-fdf-generator").fdf;
+// import { fdf } from "utf8-fdf-generator";
+
 import { camelCase } from "change-case";
 import { execFileSync } from "child_process";
 import { readdirSync, unlink, writeFile } from "fs";
 import { map, zipObject } from "lodash";
-import fdf from "utf8-fdf-generator";
 import { comment, error } from "./helpers";
 
 interface IField {
