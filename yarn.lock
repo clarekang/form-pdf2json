@@ -3675,7 +3675,7 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-utf8-fdf-generator@0.0.3:
+utf8-fdf-generator@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/utf8-fdf-generator/-/utf8-fdf-generator-0.0.3.tgz#397e8f7940c276d0e3d435ec27b17d3a57e8f9ce"
   integrity sha1-OX6PeUDCdtDj1DXsJ7F9Olfo+c4=
