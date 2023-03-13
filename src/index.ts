@@ -1,10 +1,4 @@
-/**
- * There is no @types for utf8-fdf-generator
- * So ignore tslint rule temporary
- */
-// tslint:disable-next-line:no-var-requires
-const fdf = require("utf8-fdf-generator").fdf;
-// import { fdf } from "utf8-fdf-generator";
+import * as fdf from "utf8-fdf-generator";
 
 import { camelCase } from "change-case";
 import { execFileSync } from "child_process";
@@ -12,9 +6,7 @@ import { readdirSync, unlink, writeFile } from "fs";
 import { map, zipObject } from "lodash";
 import { comment, error } from "./helpers";
 
-interface IField {
-  [key: string]: string;
-}
+type Field = Record<string, string>;
 
 export default class Pdf2Json {
   private sourcePath: string;
@@ -38,16 +30,16 @@ export default class Pdf2Json {
     this.exportFile(outputFilePath, data);
   }
 
-  public async convertPdf2Json(fileName: string): Promise<IField[]> {
+  public async convertPdf2Json(fileName: string): Promise<Field[]> {
     const sourceFile = `${this.sourcePath}${fileName}`;
     const regStateOption = /IFieldStateOption: ((?!Off)[A-Za-z\t .]+)/;
-    const fieldArray: IField[] = [];
+    const fieldArray: Field[] = [];
     const defaultIFields = ["fieldName", "fieldType", "fieldFlags"];
 
     try {
       const stdout = execFileSync("pdftk", [
         sourceFile,
-        "dump_data_fields_utf8"
+        "dump_data_fields_utf8",
       ]);
 
       const fields = stdout
@@ -56,7 +48,7 @@ export default class Pdf2Json {
         .slice(1);
 
       fields.forEach((field: string) => {
-        const currentIField: IField = {};
+        const currentIField: Field = {};
         field.split("\n").forEach(fieldOption => {
           if (!fieldOption) {
             return;
@@ -123,7 +115,7 @@ export default class Pdf2Json {
         "fill_form",
         tempFDFFile,
         "output",
-        outputFilePath
+        outputFilePath,
       ]);
 
       // Delete the temporary fdf file.
